@@ -1,0 +1,23 @@
+library IEE;
+
+use IEE.STD_LOGIC_1164.ALL;
+
+
+
+---------------------------
+
+-- declare ALU-------------
+
+entity ALU is
+
+  Port  ( data1       : in  STD_LOGIC_VECTOR (31 downto 0); -- Read data 1 (32 bit input)
+
+          data2       : in  STD_LOGIC_VECTOR (31 downto 0); -- Read data 2 (32 bit input)
+
+          ALU_control : in  STD_LOGIC_VECTOR (3 downto 0); -- Alu control (4 bit input (15 intructions))
+
+          ALU_result  : out STD_LOGIC_VECTOR (31 downto 0); -- Alu result (32 bit output)
+
+          Zero        : out STD_LOGIC); -- Alu zero (1 bit output)
+
+end ALU;
