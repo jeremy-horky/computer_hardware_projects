@@ -1,23 +1,58 @@
 library IEE;
-
 use IEE.STD_LOGIC_1164.ALL;
 
-
-
 ---------------------------
-
 -- declare ALU-------------
+use IEE.NUMERIC_STD.ALL;  -- NEED TO USE THE COMPONENTS WE HAVE BUILT INSTEAD OF LIB-------------------
 
 entity ALU is
-
   Port  ( data1       : in  STD_LOGIC_VECTOR (31 downto 0); -- Read data 1 (32 bit input)
-
           data2       : in  STD_LOGIC_VECTOR (31 downto 0); -- Read data 2 (32 bit input)
-
-          ALU_control : in  STD_LOGIC_VECTOR (3 downto 0); -- Alu control (4 bit input (15 intructions))
-
+          ALU_control : in  STD_LOGIC_VECTOR (3 downto 0);  -- Alu control (4 bit input (15 intructions))
           ALU_result  : out STD_LOGIC_VECTOR (31 downto 0); -- Alu result (32 bit output)
-
-          Zero        : out STD_LOGIC); -- Alu zero (1 bit output)
-
+          Zero        : out STD_LOGIC);                     -- Alu zero (1 bit output)
 end ALU;
+
+
+-------------------------
+--ALU description--------
+architecture Behavioral of ALU is
+  signal  result_temp : STD_LOGIC_VECTOR (31 downto 0);
+begin
+  process(a1, a2, ALU_control)
+  begin
+  
+    case ALU_control is  
+      when "0000" => --ADD
+        result_temp <= a1 + a2; -- convert to unsigned
+        
+      when "0001" => --SUB
+        result_temp <= a1 - a2; -- convert to usigned
+      
+      when "0010" => --AND
+        result_temp <= a1 and a1;
+        
+      when "0011" => --OR
+        result_temp <= a1 or a2;
+        
+      when "0100" => --SLT
+        if  (al < a2) then
+          result_temp <= 00000001;
+        else  
+          result_temp <= 00000000;
+        end if;
+      
+      when others => null; -- 
+        result_temp <= 00000000; 
+    end case;
+      
+  end process;
+  
+  ------------------------------
+  ALU_result <= result_temp; -- set ALU result output to the temp value
+  if resut_temp = 00000000 then -- if alu result is '0' then return Zero as true
+    Zero <= '1';
+  else
+    Zero <= '0';
+  
+end Behavioral;
