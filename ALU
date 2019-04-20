@@ -1,3 +1,7 @@
+---------------------------------
+-- 32 bit ALU needs to support ADD, SUB, AND, OR, SLL, SRL, SLT and have zero-check and overflow indicators
+---------------------------------
+
 library IEE;
 use IEE.STD_LOGIC_1164.ALL;
 
@@ -8,7 +12,7 @@ use IEE.NUMERIC_STD.ALL;  -- NEED TO USE THE COMPONENTS WE HAVE BUILT INSTEAD OF
 entity ALU is
   Port  ( data1       : in  STD_LOGIC_VECTOR (31 downto 0); -- Read data 1 (32 bit input)
           data2       : in  STD_LOGIC_VECTOR (31 downto 0); -- Read data 2 (32 bit input)
-          ALU_control : in  STD_LOGIC_VECTOR (3 downto 0);  -- Alu control (4 bit input (15 intructions))
+          ALU_control : in  STD_LOGIC_VECTOR (2 downto 0);  -- Alu control (3 bit input (7 intructions))
           ALU_result  : out STD_LOGIC_VECTOR (31 downto 0); -- Alu result (32 bit output)
           Zero        : out STD_LOGIC);                     -- Alu zero (1 bit output)
 end ALU;
@@ -24,19 +28,19 @@ begin
   
     -- set input key to match the mips sheet?
     case ALU_control is  
-      when "0000" => --ADD
+      when "000" => --ADD
         result_temp <= a1 + a2; -- convert to unsigned
         
-      when "0001" => --SUB
+      when "001" => --SUB
         result_temp <= a1 - a2; -- convert to usigned
       
-      when "0010" => --AND
+      when "010" => --AND
         result_temp <= a1 and a1;
         
-      when "0011" => --OR
+      when "011" => --OR
         result_temp <= a1 or a2;
         
-      when "0100" => --SLT
+      when "100" => --SLT
         if  (al < a2) then
           result_temp <= 00000001;
         else  
