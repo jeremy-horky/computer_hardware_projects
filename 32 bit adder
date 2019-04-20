@@ -7,12 +7,12 @@ use IEE.STD_LOGIC_1164.ALL;
 
 ---------------------------
 -- declare adder-------------
-entity 4BitAdder is
+entity 32BitAdder is
 port(
-      a:    in  std_logic_vector(3 downto 0);   -- 'a' is first 4 bit number being added
-      b:    in  std_logic_vector(3 downto 0);   -- 'b' is 4 bit number being added to 'a'
+      a:    in  std_logic_vector(31 downto 0);   -- 'a' is first 32 bit number being added
+      b:    in  std_logic_vector(31 downto 0);   -- 'b' is 32 bit number being added to 'a'
       c_in: in  std_logic;                      -- carryin is if the prev adder had an overflow 
-      output: out std_logic_vector(3 downto 0); -- 4 bit output to 'a'+'b'
+      output: out std_logic_vector(31 downto 0); -- 32 bit output to 'a'+'b'
       c_out:  out std_logic                     -- overflow to be carried to next adder (or result in aswer overflow)
       );
-end 4BitAdder;
+end 32BitAdder;
