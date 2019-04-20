@@ -65,3 +65,22 @@ fa29: fullAdder port map (a=>A(29), b=>B(29), c=>t29, co=>t30, sum=>output(29));
 fa30: fullAdder port map (a=>A(30), b=>B(30), c=>t30, co=>t31, sum=>output(30));
 fa31: fullAdder port map (a=>A(31), b=>B(31), c=>t31, co=>C_out, sum=>output(31));
 end Behavioral;
+
+-- declare lib again?
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+-- full Adder---------
+entity fullAdder is
+      port(
+            a, b, c: in std_logic;
+            co: out std_logic;
+            s: out std_logic
+            );
+end fullAdder;
+
+architecture fullAdder_arch of fullAdder is
+begin
+s<=a xor b xor c;
+co<=(a and b) or (c and (A or B));
+end fullAdder_arch;
