@@ -1,0 +1,68 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY adder_tb is
+END adder_tb;
+ 
+ARCHITECTURE behavior of adder_tb is 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT 32Adder
+    PORT(
+         A : IN  std_logic_vector(31 downto 0);
+         B : IN  std_logic_vector(31 downto 0);
+         C_in : IN  std_logic;
+         sum : OUT  std_logic_vector(31 downto 0);
+         C_out : OUT  std_logic
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal A : std_logic_vector(31 downto 0) := (others => '0');
+   signal B : std_logic_vector(31 downto 0) := (others => '0');
+   signal C_in : std_logic := '0';
+
+ 	--Outputs
+   signal sum : std_logic_vector(31 downto 0);
+   signal C_out : std_logic;
+
+ 
+BEGIN
+ 
+   uut: 32Adder PORT MAP (
+          A => A,
+          B => B,
+          C_in => C_in,
+          sum => sum,
+          C_out => C_out
+        );
+        
+        
+
+   stim_A: process
+   begin		
+      A<="00000000000000000000000001000100";
+      wait for 100 ns;	
+      A<="00000000000000000000000011000111";
+      wait;
+   end process;
+
+
+   stim_B: process
+   begin		
+      B<="00000000000000000011100011100000";
+      wait for 100 ns;	
+      B<="00001110000000000000100001000111";
+      wait;
+   end process;
+	
+	
+   stim_Cin: process
+   begin		
+		C_in<='0';
+      wait for 100 ns;	
+      wait;
+   end process;
+END;
