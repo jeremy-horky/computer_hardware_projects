@@ -9,10 +9,25 @@ use IEE.STD_LOGIC_1164.ALL;
 -- declare adder-------------
 entity 32BitAdder is
 port(
-      a:    in  std_logic_vector(31 downto 0);   -- 'a' is first 32 bit number being added
-      b:    in  std_logic_vector(31 downto 0);   -- 'b' is 32 bit number being added to 'a'
-      c_in: in  std_logic;                      -- carryin is if the prev adder had an overflow 
-      output: out std_logic_vector(31 downto 0); -- 32 bit output to 'a'+'b'
-      c_out:  out std_logic                     -- overflow to be carried to next adder (or result in aswer overflow)
+      A:    in  std_logic_vector(31 downto 0);   -- 'A' is first 32 bit number being added
+      B:    in  std_logic_vector(31 downto 0);   -- 'B' is 32 bit number being added to 'A'
+      C_in: in  std_logic;                       -- carryin is if the prev adder had an overflow 
+      output: out std_logic_vector(31 downto 0); -- 32 bit output to 'A'+'B'
+      C_out:  out std_logic                      -- overflow to be carried to next adder (or result in aswer overflow)
       );
 end 32BitAdder;
+
+
+-------------------
+Architecture Behavioral of 32BitAdder is
+      -- signals are for temp adder carry values moving up the 32 bits addition
+      signal t1, t2, t3, t4, t5, t6, t7, t8:    std_logic;
+      
+      Component fullAdder is
+      Port(
+            a,b,c: in   std_logic;
+            co:    out  std_logic;
+            ans:   out  std_logic
+            );
+      end component;
+      
