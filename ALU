@@ -22,6 +22,7 @@ begin
   process(a1, a2, ALU_control)
   begin
   
+    -- set input key to match the mips sheet?
     case ALU_control is  
       when "0000" => --ADD
         result_temp <= a1 + a2; -- convert to unsigned
