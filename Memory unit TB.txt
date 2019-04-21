@@ -31,7 +31,7 @@ BEGIN
           data      => data,
           write_en  => write_en,
           read_en   => read_en,
-          clk       => clk,
+          clk       => clk, -- not currently supported
           
           out       => out
         );
@@ -39,8 +39,13 @@ BEGIN
         
 
    tb1: process
-   begin		
-
+   begin		-- doesnt support clock
+       address <= x"10010000";
+       data    <= x"11111111";
+       write_en<= '0';
+       wait 10 ns;
+       write_en<= '1';
+       wait      
    end process;
 
 END memUnit_tb;
