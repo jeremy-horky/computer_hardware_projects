@@ -5,20 +5,6 @@ ENTITY adder_tb is
 END adder_tb;
  
 ARCHITECTURE behavior of adder_tb is 
- 
-    -- Component Declaration for the Unit Under Test (UUT)
- 
-    COMPONENT 32Adder
-    PORT(
-         A 	: IN  	std_logic_vector(31 downto 0);
-         B 	: IN  	std_logic_vector(31 downto 0);
-         C_in 	: IN  	std_logic;
-	 
-         sum 	: OUT  	std_logic_vector(31 downto 0);
-         C_out 	: OUT  	std_logic
-        );
-    END COMPONENT;
-    
 
    	--Inputs
    signal A : std_logic_vector(31 downto 0) := (others => '0');
@@ -31,7 +17,8 @@ ARCHITECTURE behavior of adder_tb is
  
 BEGIN
  
-   uut: 32Adder PORT MAP (
+ -- make sure 32_bit_adder is right file name
+   uut: entity work.32_bit_adder PORT MAP (
           A => A,
           B => B,
           C_in => C_in,
@@ -41,28 +28,21 @@ BEGIN
         
         
 
-   stim_A: process
+   tb1: process
    begin		
       A<="00000000000000000000000001000100";
       wait for 100 ns;	
       A<="00000000000000000000000011000111";
-      wait;
-   end process;
-
-
-   stim_B: process
-   begin		
+      wait for 100 ns;
+      
       B<="00000000000000000011100011100000";
       wait for 100 ns;	
       B<="00001110000000000000100001000111";
-      wait;
-   end process;
-	
-	
-   stim_Cin: process
-   begin		
+      wait for 100 ns;
+      
       C_in<='0';
       wait for 100 ns;	
       wait;
    end process;
-END;
+
+END adder_tb;
