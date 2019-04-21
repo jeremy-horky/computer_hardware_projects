@@ -5,6 +5,7 @@
 
 library IEE;
 use IEE.STD_LOGIC_1164.ALL;
+USE IEE.numeric_std.ALL;
 
 ---------------------------
 -- declare reg file-------------
@@ -16,8 +17,64 @@ entity RegFile is
           write_reg   : in  STD_LOGIC_VECTOR (4 downto 0);  -- to write to reg to mem unit
           write_data  : in  STD_LOGIC_VECTOR (31 downto 0); -- 
           write_en    : in  STD_LOGIC;                      -- enables 'write_reg' and 'write_data'
+          clk         : in std_logic;                       -- clock (write_en is checked on rising clock edge)
           
           data1       : out STD_LOGIC_VECTOR (31 downto 0); -- used for adder 'A'
           data2       : out STD_LOGIC_VECTOR (31 downto 0); -- adder 'B' or save to mem
+          
           );
 end RegFile;
+
+
+
+
+architecture Behavioral of RegFile is
+    -- setting up reg block of 32 registers each with 32 bits. each is init with '0..0'
+    type reg_array is array(0 to 31) of STD_LOGIC_VECTOR (31 downto 0);
+    signal reg_block: reg_array := (
+        "00000000000000000000000000000000", 
+        "00000000000000000000000000000000", 
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000", 
+        "00000000000000000000000000000000", 
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000", 
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000",  
+        "00000000000000000000000000000000", 
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000", 
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000",
+        "00000000000000000000000000000000", 
+        "00000000000000000000000000000000", 
+        "00000000000000000000000000000000"
+    );
+begin
+    data1 <= reg_block(to_integer(unsigned(reg1)));
+    data2 <= reg_block(to_integer(unsigned(reg2)));
+
+    process(clk)
+        begin
+        -- write to mem reg is rising clk edge and write is enabled
+        if clk='1' and clk'event and reg_write='1' then
+            reg_block(to_integer(unsigned(write_en))) <= write_data;
+        end if;
+    end process;
+    
+end Behavioral;
