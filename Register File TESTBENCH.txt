@@ -1,13 +1,14 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
-ENTITY adder_tb is
-END adder_tb;
+ENTITY regFile_tb is
+END regFile_tb;
  
-ARCHITECTURE behavior of adder_tb is 
-
+ARCHITECTURE behavior of regFile_tb is 
+  constant clk_period : time := 20 ns;
+  
   -- input signals  
-  signal  reg1        : in  STD_LOGIC_VECTOR (4 downto 0):= (others => '0');  -- takes instr 25-21
+  signal  reg1        : in  STD_LOGIC_VECTOR (4 downto 0) := (others => '0');  -- takes instr 25-21
   signal  reg2        : in  STD_LOGIC_VECTOR (4 downto 0) := (others => '0'); -- takes instr 20-16
   signal  write_reg   : in  STD_LOGIC_VECTOR (4 downto 0) := (others => '0'); -- to write to reg to mem unit
   signal  write_data  : in  STD_LOGIC_VECTOR (31 downto 0):= (others => '0'); -- 
@@ -20,7 +21,8 @@ ARCHITECTURE behavior of adder_tb is
  
 BEGIN
               -- make sure Register_file is right file name
-   uut: entity work.Register_file PORT MAP (
+   uut: entity work.Register_file--(Behavioral)  ????
+   PORT MAP (
           reg1       => reg1,
           reg2       => reg2,
           write_reg  => write_reg,
@@ -32,11 +34,14 @@ BEGIN
         );
         
         
-
+-- run clk work??? not necessary to start testing
+clk <= not clk after clk_period / 2;
+   
    stim: process
    -- clk edge is raised every 10 ns (for this tb)
    begin		
 
+   wait;
    end process;
 
-END;
+END regFile_tb;
