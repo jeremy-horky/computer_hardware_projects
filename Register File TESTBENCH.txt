@@ -1,0 +1,42 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY adder_tb is
+END adder_tb;
+ 
+ARCHITECTURE behavior of adder_tb is 
+
+  -- input signals  
+  signal  reg1        : in  STD_LOGIC_VECTOR (4 downto 0):= (others => '0');  -- takes instr 25-21
+  signal  reg2        : in  STD_LOGIC_VECTOR (4 downto 0) := (others => '0'); -- takes instr 20-16
+  signal  write_reg   : in  STD_LOGIC_VECTOR (4 downto 0) := (others => '0'); -- to write to reg to mem unit
+  signal  write_data  : in  STD_LOGIC_VECTOR (31 downto 0):= (others => '0'); -- 
+  signal  write_en    : in  STD_LOGIC := '0';                                 -- enables 'write_reg' and 'write_data'
+  signal  clk         : in std_logic  := '0';                                 -- clock (write_en is checked on rising clock edge)
+  -- output signals
+  signal  data1       : out STD_LOGIC_VECTOR (31 downto 0):= (others => '0'); -- used for adder 'A'
+  signal  data2       : out STD_LOGIC_VECTOR (31 downto 0):= (others => '0'); -- adder 'B' or save to mem
+
+ 
+BEGIN
+              -- make sure Register_file is right file name
+   uut: entity work.Register_file PORT MAP (
+          reg1 => reg1,
+          reg2 => reg2,
+          write_reg => write_reg,
+          write_data => write_data,
+          write_en => write_en,
+          clk => clk,
+          data1 => data1,
+          data2 => data2
+        );
+        
+        
+
+   stim: process
+   -- clk edge is raised every 10 ns (for this tb)
+   begin		
+
+   end process;
+
+END;
