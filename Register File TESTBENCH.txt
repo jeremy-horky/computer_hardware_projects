@@ -21,14 +21,14 @@ ARCHITECTURE behavior of adder_tb is
 BEGIN
               -- make sure Register_file is right file name
    uut: entity work.Register_file PORT MAP (
-          reg1 => reg1,
-          reg2 => reg2,
-          write_reg => write_reg,
+          reg1       => reg1,
+          reg2       => reg2,
+          write_reg  => write_reg,
           write_data => write_data,
-          write_en => write_en,
-          clk => clk,
-          data1 => data1,
-          data2 => data2
+          write_en   => write_en,
+          clk        => clk,
+          data1      => data1,
+          data2      => data2
         );
         
         
