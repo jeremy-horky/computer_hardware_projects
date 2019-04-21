@@ -10,21 +10,21 @@ ARCHITECTURE behavior of adder_tb is
  
     COMPONENT 32Adder
     PORT(
-         A : IN  std_logic_vector(31 downto 0);
-         B : IN  std_logic_vector(31 downto 0);
-         C_in : IN  std_logic;
-         sum : OUT  std_logic_vector(31 downto 0);
-         C_out : OUT  std_logic
+         A 	: IN  	std_logic_vector(31 downto 0);
+         B 	: IN  	std_logic_vector(31 downto 0);
+         C_in 	: IN  	std_logic;
+	 
+         sum 	: OUT  	std_logic_vector(31 downto 0);
+         C_out 	: OUT  	std_logic
         );
     END COMPONENT;
     
 
-   --Inputs
+   	--Inputs
    signal A : std_logic_vector(31 downto 0) := (others => '0');
    signal B : std_logic_vector(31 downto 0) := (others => '0');
    signal C_in : std_logic := '0';
-
- 	--Outputs
+	--Outputs
    signal sum : std_logic_vector(31 downto 0);
    signal C_out : std_logic;
 
