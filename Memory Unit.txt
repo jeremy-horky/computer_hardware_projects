@@ -1,0 +1,17 @@
+---------------------------------
+-- Memory Unit
+---------------------------------
+
+library IEE;
+use IEE.STD_LOGIC_1164.ALL;
+
+entity mem_unit is
+port(
+      address : in  std_logic_vector(5 downto 0); -- address to store data in mem unit
+      data    : in  std_logic_vector(31 downto 0);-- data to be written to mem unit
+      write_en: in  std_logic;                    -- write enable allows the data to be written
+      clk     : in  std_logic;                    -- clock
+      
+      out     : out std_logic_vector(31 downto 0); -- 
+      );
+end mem_unit;
