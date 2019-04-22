@@ -33,3 +33,24 @@ BEGIN
         ALU_src   => ALU_src,
         Reg_write => Reg_write
                );
+               
+  stim: process
+  begin
+    -- test the controller output with the op_code input
+     op_code <= "000000"; -- R type
+     wait for 20 ns;
+     
+     op_code <= "100011"; -- lw
+     wait for 20 ns;
+     
+     op_code <= "101011"; -- sw
+     wait for 20 ns;
+     
+     op_code <= "000100"; -- beq
+     wait for 20 ns;
+     
+     op_code <= "000010"; -- jump
+     wait for 20 ns;
+  end process;
+  
+end behavioral;
