@@ -17,7 +17,7 @@ end ALU_control;
 architecture Behavioral of ALU_control is
 
 begin
-  if (alu_op = '00') then -- each instruction has alu_op of 0
+  if (alu_op = "00") then -- each instruction has alu_op of 0
     -- add
     if (funct = "100000") then -- funct = 20
       out <= "000";
@@ -49,6 +49,10 @@ begin
   -- nop
     else
       out <= "111";
+    end if;
+    
+  else
+    out <= "111";
   end if;
   
   
