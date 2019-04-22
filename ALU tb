@@ -8,7 +8,7 @@ use IEE.NUMERIC_STD.ALL;
 entity ALU_tb is
 end ALU_tb;
 
-Architecture Behavioral od ALU_tb is
+Architecture Behavioral of ALU_tb is
          signal data1       : in  STD_LOGIC_VECTOR (31 downto 0); -- Read data 1 is first data input
          signal data2       : in  STD_LOGIC_VECTOR (31 downto 0); -- Read data 2 is second data input
          signal ALU_control : in  STD_LOGIC_VECTOR (2 downto 0);  -- Alu control tells type of operation
