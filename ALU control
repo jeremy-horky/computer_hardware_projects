@@ -1,0 +1,55 @@
+
+---------------------------------
+-- ALU control
+---------------------------------
+
+library IEE;
+use IEE.STD_LOGIC_1164.ALL;
+use IEE.NUMERIC_STD.ALL;
+
+entity ALU_control is
+  Port  ( funct       : in  STD_LOGIC_VECTOR (5 downto 0); -- instruction[5-0] 
+          alu_op      : in  STD_LOGIC_VECTOR (1 downto 0); -- comes from control
+          
+          out         : out STD_LOGIC_VECTOR (2 downto 0); -- 3 bit output to control the ALU operation
+end ALU_control;
+
+architecture Behavioral of ALU_control is
+
+begin
+  if (alu_op = '00') then -- each instruction has alu_op of 0
+    -- add
+    if (funct = "100000") then -- funct = 20
+      out <= "000";
+      
+    -- sub
+    elseif (funct = "100010") then -- funct = 22
+      out <= "001";
+      
+    --AND
+    elseif (funct = "100100") then -- funct = 24
+      out <= "010";
+
+    --OR
+    elseif (funct = "100101") then -- funct = 25
+      out <= "011";
+
+    --sll
+    elseif (funct = "000000") then -- funct = 0
+      out <= "100";
+      
+    --srl
+    elseif (funct = "000010") then -- funct = 2
+      out <= "101";
+      
+    --slt
+    elseif (funct = "101010") then -- funct = 2a
+      out <= "110";
+      
+  -- nop
+    else
+      out <= "111";
+  end if;
+  
+  
+end Behavioral;
