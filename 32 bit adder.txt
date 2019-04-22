@@ -10,7 +10,7 @@ entity 32BitAdder is
 port(
       A:    in  std_logic_vector(31 downto 0);   -- 'A' is first 32 bit number being added
       B:    in  std_logic_vector(31 downto 0);   -- 'B' is 32 bit number being added to 'A'
-      C_in: in  std_logic;                       -- carryin is if the prev adder had an overflow 
+      C_in: in  std_logic;                       -- carryin is if the prev adder had to carry (1 + 1 carry over 1 and out 0)
       output: out std_logic_vector(31 downto 0); -- 32 bit output to 'A'+'B'
       C_out:  out std_logic                      -- overflow to be carried to next adder (or result in aswer overflow)
       );
@@ -22,19 +22,19 @@ Architecture Behavioral of 32BitAdder is
       
       Component fullAdder is
       Port(
-            a:   in  std_logic;
-            b:   in  std_logic;
-            c:   in  std_logic;
+            a:   in  std_logic;     -- a input
+            b:   in  std_logic;     -- b input
+            c:   in  std_logic;     -- cary in
             
-            co:  out std_logic;
-            sum: out std_logic
+            co:  out std_logic;     -- carry out
+            sum: out std_logic      -- sum output
             );
       end component;
       
 Begin
 fa0: fullAdder port map (a=>A(0), b=>B(0), c=>C_in, co=>t1, sum=>output(0));  -- full adder 0 term
 fa1: fullAdder port map (a=>A(1), b=>B(1), c=>t1, co=>t2, sum=>output(1));    -- full adder 1st term
-fa2: fullAdder port map (a=>A(2), b=>B(2), c=>t2, co=>t3, sum=>output(2));
+fa2: fullAdder port map (a=>A(2), b=>B(2), c=>t2, co=>t3, sum=>output(2));    -- ...
 fa3: fullAdder port map (a=>A(3), b=>B(3), c=>t3, co=>t4, sum=>output(3));
 fa4: fullAdder port map (a=>A(4), b=>B(4), c=>t4, co=>t5, sum=>output(4));
 fa5: fullAdder port map (a=>A(5), b=>B(5), c=>t5, co=>t6, sum=>output(5));
@@ -73,14 +73,17 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- full Adder---------
 entity fullAdder is
       port(
-            a, b, c: in std_logic;
-            co: out std_logic;
+            a:   in  std_logic;
+            b:   in  std_logic;
+            c:   in  std_logic;
+            
+            co:  out std_logic;
             s: out std_logic
             );
 end fullAdder;
 
 architecture fullAdder_arch of fullAdder is
 begin
-s<=a xor b xor c;
-co<=(a and b) or (c and (A or B));
+      s  <= a xor b xor c;                  -- sum is active if only a/b a/carrin b/carryin are active
+      co <= (a and b) or (c and (A or B));  -- carry out if a and b are active bit or carry in and a/b are active
 end fullAdder_arch;
