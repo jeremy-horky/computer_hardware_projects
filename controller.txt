@@ -43,7 +43,7 @@ begin
                     ALU_src   <= '0';
                     reg_write <= '1' after 10 ns; -- after cycled through, write data into register
              
-             when "101011" => -- lw
+             when "100011" => -- lw
                     Reg_dest  <= '0'; 
                     jump      <= '0';
                     branch    <= '0';
