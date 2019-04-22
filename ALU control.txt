@@ -1,6 +1,7 @@
-
 ---------------------------------
 -- ALU control
+-- sends signals to ALU to control the operation
+-- the out signal will specify an add,sub, and, or, sll, srl, slt or nop to the ALU
 ---------------------------------
 
 library IEE;
@@ -14,15 +15,15 @@ entity ALU_control is
                                                            -- '01' : beq
                                                            -- '10' : R type
           
-          out         : out STD_LOGIC_VECTOR (2 downto 0); -- 3 bit output to control the ALU operation
+          out         : out STD_LOGIC_VECTOR (2 downto 0); -- 3 bit output to control the ALU operation (may need to increase to 4 bit if we add more fuctionality)
 end ALU_control;
 
 architecture Behavioral of ALU_control is
 
 begin
-  if (alu_op = "10") then -- each instruction has alu_op of 0
+  if (alu_op = "10") then -- these are all R type operations so control has set '10' signal to indicate R type
     -- add
-    if (funct = "100000") then -- funct = 20
+    if (funct = "100000") then     -- funct = 20
       out <= "000";
       
     -- sub
@@ -49,7 +50,7 @@ begin
     elseif (funct = "101010") then -- funct = 2a
       out <= "110";
       
-  -- nop
+    -- nop
     else
       out <= "111";
     end if;
