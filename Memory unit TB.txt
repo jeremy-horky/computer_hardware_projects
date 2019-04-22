@@ -4,7 +4,7 @@ USE ieee.std_logic_1164.ALL;
 ENTITY memUnit_tb is
 END memUnit_tb;
  
-ARCHITECTURE behavior of memUnit_tb is 
+ARCHITECTURE Behavioral of memUnit_tb is 
       address : in  std_logic_vector(31 downto 0); -- address to store data in mem unit
       data    : in  std_logic_vector(31 downto 0);-- data to be written to mem unit
       write_en: in  std_logic;                    -- write enable allows the data to be written
@@ -48,4 +48,4 @@ BEGIN
        wait      
    end process;
 
-END memUnit_tb;
+END Behavioral;
