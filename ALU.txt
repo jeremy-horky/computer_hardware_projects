@@ -46,7 +46,7 @@ begin
         result_temp <= --
        
       when "110" => --SLT : set output to '1' if data1 is less thatn data2
-        if  (data1 < data2) then
+        if  (signed(data1) < signed(data2)) then
           result_temp <= 00000001;
         else  
           result_temp <= 00000000;
