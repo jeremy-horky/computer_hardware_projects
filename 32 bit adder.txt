@@ -1,12 +1,11 @@
 ---------------------------------
 -- 32 bit adder
+-- adds 2 32 bit numbers together
 ---------------------------------
 
 library IEE;
 use IEE.STD_LOGIC_1164.ALL;
 
----------------------------
--- declare adder-------------
 entity 32BitAdder is
 port(
       A:    in  std_logic_vector(31 downto 0);   -- 'A' is first 32 bit number being added
@@ -17,17 +16,18 @@ port(
       );
 end 32BitAdder;
 
-
--------------------
 Architecture Behavioral of 32BitAdder is
       -- signals are for temp adder carry values moving up the 32 bits addition
       signal t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16, t17, t18, t19, t20, t21, t22, t23, t24, t25, t26, t27, t28, t29, t30, t31:    std_logic;
       
       Component fullAdder is
       Port(
-            a,b,c: in   std_logic;
-            co:    out  std_logic;
-            sum:   out  std_logic
+            a:   in  std_logic;
+            b:   in  std_logic;
+            c:   in  std_logic;
+            
+            co:  out std_logic;
+            sum: out std_logic
             );
       end component;
       
