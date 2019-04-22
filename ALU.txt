@@ -40,10 +40,10 @@ begin
         result_temp <= data1 or data2;
        
       when "100" => --SLL : shifts
-        result_temp <= --
+        result_temp <= -- use shifter component
         
       when "101" => --SRL
-        result_temp <= --
+        result_temp <= -- use shifter component
        
       when "110" => --SLT : set output to '1' if data1 is less thatn data2
         if  (signed(data1) < signed(data2)) then
