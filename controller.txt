@@ -42,7 +42,18 @@ begin
                     mem_write <= '0';
                     ALU_src   <= '0';
                     reg_write <= '1' after 10 ns; -- after cycled through, write data into register
-
+             
+             when "101011" => -- lw
+                    Reg_dest  <= '0'; 
+                    jump      <= '0';
+                    branch    <= '0';
+                    mem_read  <= '1';
+                    mem_reg   <= '1';
+                    ALU_op    <= "00"
+                    mem_write <= '0';
+                    ALU_src   <= '1';
+                    reg_write <= '1 after 10 ns; -- after cycled through, write data into register
+                    
              when "101011" => -- sw
                     Reg_dest  <= 'X'; 
                     jump      <= '0';
@@ -75,5 +86,8 @@ begin
                     mem_write <= '0';
                     ALU_src   <= '0';
                     reg_write <= '0';
+              
+              end case;
+           end process;
                     
 end Behavioral;
