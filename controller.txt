@@ -1,0 +1,29 @@
+---------------------------------
+-- Controller -- gives controlling signals through out the circuit
+---------------------------------
+
+library IEE;
+use IEE.STD_LOGIC_1164.ALL;
+use IEE.NUMERIC_STD.ALL;
+
+entity Controller 
+is Port  (op_code    : in  STD_LOGIC_VECTOR (5 downto 0); -- Read data 1 is first data input
+          
+          Reg_dest   : out std_logic; -- controls mux for write register of register file
+          jump       : out std_logic; -- enables mux allowing jump to occur
+          branch     : out std_logic; -- enables nand gate to activate a branch
+          mem_read   : out std_logic; -- tells memory block it wants to read data
+          mem_reg    : out std_logic; -- enables mux output of mem block for mem data instead of ALU output
+          ALU_op     : out std_logic_vector(1 downto 0); -- 00 lw sw, 01 beq, 10 R type
+          mem_write  : out std_logic; -- write to memoery
+          ALU_src    : out std_logic; -- controls mux in front of ALU to be read data 2 of register file or instruciton
+          Reg_write  : out std_logic  -- to write data into register, need it to be activated after entire circuit is cycled through
+          );
+
+end Controller;
+
+architecture Behavioral of Controller is
+
+begin
+
+end Behavioral;
