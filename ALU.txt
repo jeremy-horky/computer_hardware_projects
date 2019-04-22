@@ -28,10 +28,10 @@ begin
     -- use adder for ADD and SUB
     case ALU_control is  
       when "000" => --ADD : add the values of data1 and data2 together
-        result_temp <= std_log_vector(unsigned(data1) + unsigned(data2)); -- use adder
+        result_temp <= std_logic_vector(unsigned(data1) + unsigned(data2)); -- use adder
         
       when "001" => --SUB : subtract the value of data2 from data1
-        result_temp <= std_log_vector(unsigned(data1) - unsigned(data2)); -- use adder
+        result_temp <= std_logic_vector(unsigned(data1) - unsigned(data2)); -- use adder
       
       when "010" => --AND : check boolean of data1 AND data2
         result_temp <= data1 and data2;
