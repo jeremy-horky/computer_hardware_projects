@@ -17,16 +17,14 @@ entity ALU is
 end ALU;
 
 
--------------------------
---ALU description--------
 architecture Behavioral of ALU is
-  signal  result_temp : STD_LOGIC_VECTOR (31 downto 0);
+  signal  result_temp : STD_LOGIC_VECTOR (31 downto 0); -- saves temp value of out while they work concurrently
 begin
-  process(data1, data2, ALU_control)
+  process(data1, data2, ALU_control) -- if one changes, process is triggered
   begin
   
     -- use adder for ADD and SUB
-    case ALU_control is  
+    case ALU_control is -- ALU control indicates operation type
       when "000" => --ADD : add the values of data1 and data2 together
         result_temp <= std_logic_vector(unsigned(data1) + unsigned(data2)); -- use adder
         
@@ -47,7 +45,7 @@ begin
        
       when "110" => --SLT : set output to '1' if data1 is less thatn data2
         if  (signed(data1) < signed(data2)) then
-          result_temp <= 00000001;
+          result_temp <= 00000001; -- data1<data2
         else  
           result_temp <= 00000000;
         end if;
@@ -58,7 +56,7 @@ begin
       
   end process;
   
-  ------------------------------
+  
   out <= result_temp; -- set ALU result output to the temp value
   if resut_temp = 00000000 then -- if alu result is '0' then return Zero as true
     Zero <= '1';
