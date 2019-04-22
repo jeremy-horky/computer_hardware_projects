@@ -5,7 +5,7 @@ USE ieee.numeric_std.ALL;
 ENTITY regFile_tb is
 END regFile_tb;
  
-ARCHITECTURE behavior of regFile_tb is 
+ARCHITECTURE behaviorial of regFile_tb is 
   constant clk_period : time := 20 ns; -- only if clk is working
   
   -- input signals  
@@ -53,4 +53,4 @@ clk <= not clk after clk_period / 2;
    wait;
    end process;
 
-END regFile_tb;
+END behaviorial;
