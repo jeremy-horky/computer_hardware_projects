@@ -29,7 +29,7 @@ begin
       wait for 20 ns; -- out is '111' (nop)
       
       -- set alu_op and check each function operation
-      alu_op <= "00";
+      alu_op <= "10"; -- R type
       wait for 20 ns; -- out is '000' (and)
       
       funct <= "100010"; -- sub
