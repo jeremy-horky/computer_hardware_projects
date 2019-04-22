@@ -4,7 +4,7 @@ USE ieee.std_logic_1164.ALL;
 ENTITY adder_tb is
 END adder_tb;
  
-ARCHITECTURE behavior of adder_tb is 
+ARCHITECTURE behaviorial of adder_tb is 
 
    	--Inputs
    signal A : std_logic_vector(31 downto 0) := (others => '0');
@@ -45,4 +45,4 @@ BEGIN
       wait;
    end process;
 
-END adder_tb;
+END behavioral;
