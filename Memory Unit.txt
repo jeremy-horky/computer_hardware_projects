@@ -10,10 +10,10 @@ port(
       address : in  std_logic_vector(31 downto 0); -- address to store data in mem unit
       data    : in  std_logic_vector(31 downto 0);-- data to be written to mem unit
       write_en: in  std_logic;                    -- write enable allows the data to be written
-      read_en : in  std_logic;                    --
+      read_en : in  std_logic;                    -- enables reading og mem unit
       clk     : in  std_logic;                    -- clock
       
-      out     : out std_logic_vector(31 downto 0); -- 
+      out     : out std_logic_vector(31 downto 0); -- enables output but memtoreg mux determines if mem unit or ALU output is passed (data path controller determines this)
       );
 end mem_unit;
 
@@ -57,14 +57,14 @@ signal data_mem: mem_array := (
 
 begin
 
-out <= data_mem(conv_integer(address(6 downto 2))) when read_en = '1' else X"00000000";
+out <= data_mem(conv_integer(address(6 downto 2))) when read_en = '1' else X"00000000"; -- sets output based on address
 
 mem_process: process(address, data, clk)
 begin
 	if (rising_edge(clk)) --work?
-      --if clk = '0' and clk'event then
-		if (write_en = '1') then
-			data_mem(conv_integer(address(6 downto 2))) <= data;
+      --if clk = '0' and clk'event then -- if rising edge of clock
+		if (write_en = '1') then -- if writing is enabled
+			data_mem(conv_integer(address(6 downto 2))) <= data; -- write data mem ALU value
 		end if;
 	end if;
 end process mem_process;
