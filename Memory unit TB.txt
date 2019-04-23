@@ -5,6 +5,8 @@ ENTITY memUnit_tb is
 END memUnit_tb;
  
 ARCHITECTURE Behavioral of memUnit_tb is 
+      constant clk_period : time := 20 ns;
+      
       address : in  std_logic_vector(31 downto 0); -- address to store data in mem unit
       data    : in  std_logic_vector(31 downto 0);-- data to be written to mem unit
       write_en: in  std_logic;                    -- write enable allows the data to be written
@@ -37,9 +39,10 @@ BEGIN
         );
         
         
-
+   clk <= not clk after clk_period / 2;
+   
    tb1: process
-   begin		-- doesnt support clock
+   begin
        address <= x"10010000";
        data    <= x"11111111";
        write_en<= '0';
