@@ -21,7 +21,11 @@ end ALU;
 architecture Behavioral of ALU is
   signal  result_temp : STD_LOGIC_VECTOR (31 downto 0); -- saves temp value of out while they work concurrently
   
+  signal subTemp : STD_LOGIC_VECTOR (31 downto 0);
+  
+  
 begin
+  
   process(data1, data2, ALU_Control) -- if one changes, process is triggered
   begin
   
@@ -31,6 +35,7 @@ begin
         result_temp <= std_logic_vector(unsigned(data1) + unsigned(data2)); -- use adder
         
       when "001" => --SUB : subtract the value of data2 from data1
+        --subTemp <= not data2; -- using an adder as a sub is : a - (twos compliment b)
         result_temp <= std_logic_vector(unsigned(data1) - unsigned(data2)); -- use adder
       
       when "010" => --AND : check boolean of data1 AND data2
@@ -62,7 +67,7 @@ begin
   output <= result_temp; -- set ALU result output to the temp value
   process(result_temp)
   begin
-    if result_temp = "00000000" then -- if alu result is '0' then return Zero as true
+    if result_temp = "00000000000000000000000000000000" then -- if alu result is '0' then return Zero as true
       Zero <= '1';
     else
       Zero <= '0';
