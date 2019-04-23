@@ -29,6 +29,7 @@ begin
         result_temp <= std_logic_vector(unsigned(data1) + unsigned(data2)); -- use adder
         
       when "001" => --SUB : subtract the value of data2 from data1
+        data2 <= signed(data2); -- using an adder as a sub is : a - (twos compliment b)
         result_temp <= std_logic_vector(unsigned(data1) - unsigned(data2)); -- use adder
       
       when "010" => --AND : check boolean of data1 AND data2
