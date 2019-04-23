@@ -61,8 +61,8 @@ out <= data_mem(conv_integer(address(6 downto 2))) when read_en = '1' else X"000
 
 mem_process: process(address, data, clk)
 begin
-	if (rising_edge(clk)) --work?
-      --if clk = '0' and clk'event then -- if rising edge of clock
+
+      if clk = '0' and clk'event then -- if rising edge of clock
 		if (write_en = '1') then -- if writing is enabled
 			data_mem(conv_integer(address(6 downto 2))) <= data; -- write data mem ALU value
 		end if;
