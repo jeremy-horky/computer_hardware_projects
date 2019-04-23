@@ -73,7 +73,7 @@ begin
                     reg_write <= '0'; 
                     
              when "000100" => -- beq
-                    Reg_dest  <= '0'; 
+                    Reg_dest  <= 'X'; 
                     jump      <= '0';
                     branch    <= '1' after 10 ns; -- need to find actual time to wait
                     mem_read  <= '0';
