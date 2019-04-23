@@ -31,14 +31,15 @@ begin
   --temp <= data; -- save data values into the temp
   process(ALU)
   begin
-  if ALU = "100" then -- sll
+  if ALU = "101" then -- srl
+	data_out(31) <= '0';
     	for i in 0 to 30 loop
 	    data_out(i) <= data(i+1);
 	end loop;
-	data_out(31) <= '0';
+	
   end if;   
   
-  if ALU = "101" then --srl
+  if ALU = "100" then --sll
       data_out(0) <= '0';
       for i in 1 to 31 loop
 	   data_out(i) <= data(i-1);
