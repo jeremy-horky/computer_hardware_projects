@@ -36,10 +36,7 @@ begin
     	for i in 0 to 30 loop
 	    data_out(i) <= data(i+1);
 	end loop;
-	
-  end if;   
-  
-  if ALU = "100" then --sll
+  elsif ALU = "100" then --sll
       data_out(0) <= '0';
       for i in 1 to 31 loop
 	   data_out(i) <= data(i-1);
