@@ -1,0 +1,100 @@
+--------------------------------------------------------
+-- Code written for Marquette University COEN 4710    --
+-- Project #2: 32-bit MIPS ISA Components             --
+-- Instructor: Dr. Cris Ababei                        --
+-- Authors: Logan Wedel, Jeremy Horky, Daniel Whipple --
+--------------------------------------------------------
+
+---------------------------------
+-- Controller -- gives controlling signals through out the circuit
+---------------------------------
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity Controller 
+is Port  (op_code    : in  STD_LOGIC_VECTOR (5 downto 0); -- instr[31-26]
+          
+          Reg_dest   : out std_logic; -- controls mux for write register of register file
+          jump       : out std_logic; -- enables mux allowing jump to occur
+          branch     : out std_logic; -- enables nand gate to activate a branch
+          mem_read   : out std_logic; -- tells memory block it wants to read data
+          mem_reg    : out std_logic; -- enables mux output of mem block for mem data instead of ALU output
+          ALU_op     : out std_logic_vector(1 downto 0); -- 00 lw sw, 01 beq, 10 R type
+          mem_write  : out std_logic; -- write to memoery
+          ALU_src    : out std_logic; -- controls mux in front of ALU to be read data 2 of register file or instruciton
+          Reg_write  : out std_logic  -- to write data into register, need it to be activated after entire circuit is cycled through
+          );
+
+end Controller;
+
+architecture Behavioral of Controller is
+
+begin
+          process(op_code) -- if opcode changes, this part executes
+          begin
+          
+          Reg_write <= '0'; -- need to reset the writing enabler (always happens after cycled through)
+          
+          case op_code is
+          
+             when "000000" => -- AND OR ADD SUB SLT SLL SRL: R type
+                    Reg_dest  <= '1'; 
+                    jump      <= '0';
+                    branch    <= '0';
+                    mem_read  <= '0';
+                    mem_reg   <= '0';
+                    ALU_op    <= "10";
+                    mem_write <= '0';
+                    ALU_src   <= '0';
+                    reg_write <= '1' after 10 ns; -- after cycled through, write data into register
+             
+             when "100011" => -- lw
+                    Reg_dest  <= '0'; 
+                    jump      <= '0';
+                    branch    <= '0';
+                    mem_read  <= '1';
+                    mem_reg   <= '1';
+                    ALU_op    <= "00";
+                    mem_write <= '0';
+                    ALU_src   <= '1';
+                    reg_write <= '1' after 10 ns; -- after cycled through, write data into register
+                    
+             when "101011" => -- sw
+                    Reg_dest  <= 'X'; 
+                    jump      <= '0';
+                    branch    <= '0';
+                    mem_read  <= '0';
+                    mem_reg   <= 'X';
+                    ALU_op    <= "00";
+                    mem_write <= '1';
+                    ALU_src   <= '1';
+                    reg_write <= '0'; 
+                    
+             when "000100" => -- beq
+                    Reg_dest  <= '0'; 
+                    jump      <= '0';
+                    branch    <= '1' after 10 ns; -- need to find actual time to wait
+                    mem_read  <= '0';
+                    mem_reg   <= 'X';
+                    ALU_op    <= "01"; 
+                    mem_write <= '0';
+                    ALU_src   <= '0';
+                    reg_write <= '0';
+                    
+             when "000010" => -- jump
+                    Reg_dest  <= 'X'; 
+                    jump      <= '1';
+                    branch    <= '0';
+                    mem_read  <= '0';
+                    mem_reg   <= 'X';
+                    ALU_op    <= "00";
+                    mem_write <= '0';
+                    ALU_src   <= '0';
+                    reg_write <= '0';
+              
+              end case;
+           end process;
+                    
+end Behavioral;

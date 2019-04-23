@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Mon Apr 22 23:21:55 2019
+# Process ID: 6012
+# Current directory: C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/Memory Unit/Memory Unit.runs/synth_1
+# Command line: vivado.exe -log mem_unit.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source mem_unit.tcl
+# Log file: C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/Memory Unit/Memory Unit.runs/synth_1/mem_unit.vds
+# Journal file: C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/Memory Unit/Memory Unit.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source mem_unit.tcl -notrace
