@@ -12,7 +12,7 @@ ENTITY memUnit_tb is
 END memUnit_tb;
  
 ARCHITECTURE Behavioral of memUnit_tb is 
-
+   constant clk_period : time := 20 ns;
    	--Inputs
    signal address   : std_logic_vector(31 downto 0) := (others => '0');
    signal data      : std_logic_vector(31 downto 0) := (others => '0');
@@ -24,22 +24,21 @@ ARCHITECTURE Behavioral of memUnit_tb is
  
 BEGIN
  
- -- make sure 32_bit_adder is right file name
-   uut: entity work.mem_unit --(Behavioral)????
+   uut: entity work.mem_unit
    PORT MAP (
           address   => address,
           data      => data,
           write_en  => write_en,
           read_en   => read_en,
-          clk       => clk, -- not currently supported
+          clk       => clk,
           
           output    => output
         );
         
-        
+   clk <= not clk after clk_period / 2;        
 
    tb1: process
-   begin		-- doesnt support clock
+   begin
        address <= x"10010000";
        data    <= x"11111111";
        write_en<= '0';
