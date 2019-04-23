@@ -47,13 +47,13 @@ begin
        
       when "110" => --SLT : set output to '1' if data1 is less thatn data2
         if  (signed(data1) < signed(data2)) then
-          result_temp <= "00000001"; -- data1<data2
+          result_temp <= "00000000000000000000000000000001"; -- data1<data2
         else  
-          result_temp <= "00000000";
+          result_temp <= "00000000000000000000000000000000";
         end if;
       
       when others => null; -- no valid ALU opcode
-        result_temp <= "00000000"; 
+        result_temp <= "00000000000000000000000000000000"; 
     end case;
       
   end process;

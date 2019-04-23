@@ -1,0 +1,6 @@
+--------------------------------------------------------
+-- Code written for Marquette University COEN 4710    --
+-- Project #2: 32-bit MIPS ISA Components             --
+-- Instructor: Dr. Cris Ababei                        --
+-- Authors: Logan Wedel, Jeremy Horky, Daniel Whipple --
+--------------------------------------------------------

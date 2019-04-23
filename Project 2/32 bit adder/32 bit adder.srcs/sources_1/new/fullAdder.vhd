@@ -16,13 +16,13 @@ entity fullAdder is
             c:   in  std_logic;
             
             co:  out std_logic;
-            s: out std_logic
+            sum: out std_logic
             );
 end fullAdder;
 
 architecture fullAdder_arch of fullAdder is
 begin
-      s  <= a xor b xor c;                  -- sum is active if only a/b a/carrin b/carryin are active
+      sum  <= a xor b xor c;                  -- sum is active if only a/b a/carrin b/carryin are active
       co <= (a and b) or (c and (A or B));  -- carry out if a and b are active bit or carry in and a/b are active
 end fullAdder_arch;
 

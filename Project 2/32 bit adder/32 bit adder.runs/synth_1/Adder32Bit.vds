@@ -1,0 +1,35 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Tue Apr 23 00:03:25 2019
+# Process ID: 6080
+# Current directory: C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/32 bit adder/32 bit adder.runs/synth_1
+# Command line: vivado.exe -log Adder32Bit.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Adder32Bit.tcl
+# Log file: C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/32 bit adder/32 bit adder.runs/synth_1/Adder32Bit.vds
+# Journal file: C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/32 bit adder/32 bit adder.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source Adder32Bit.tcl -notrace
+Command: synth_design -top Adder32Bit -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 10944 
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 340.391 ; gain = 77.625
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'Adder32Bit' [C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/32 bit adder/32 bit adder.srcs/sources_1/new/32 bit adder.vhd:26]
+WARNING: [Synth 8-5640] Port 's' is missing in component declaration [C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/32 bit adder/32 bit adder.srcs/sources_1/new/32 bit adder.vhd:30]
+INFO: [Synth 8-3491] module 'fullAdder' declared at 'C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/32 bit adder/32 bit adder.srcs/sources_1/new/fullAdder.vhd:12' bound to instance 'fa0' of component 'fullAdder' [C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/32 bit adder/32 bit adder.srcs/sources_1/new/32 bit adder.vhd:42]
+ERROR: [Synth 8-3493] module 'fulladder' declared at 'C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/32 bit adder/32 bit adder.srcs/sources_1/new/fullAdder.vhd:12' does not have matching formal port for component port 'sum' [C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/32 bit adder/32 bit adder.srcs/sources_1/new/32 bit adder.vhd:42]
+ERROR: [Synth 8-285] failed synthesizing module 'Adder32Bit' [C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/32 bit adder/32 bit adder.srcs/sources_1/new/32 bit adder.vhd:26]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 396.625 ; gain = 133.859
+---------------------------------------------------------------------------------
+synthesize failed
+INFO: [Common 17-83] Releasing license: Synthesis
+4 Infos, 1 Warnings, 0 Critical Warnings and 3 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Vivado Synthesis failed
+INFO: [Common 17-206] Exiting Vivado at Tue Apr 23 00:03:32 2019...

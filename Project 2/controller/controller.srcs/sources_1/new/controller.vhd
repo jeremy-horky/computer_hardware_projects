@@ -94,6 +94,16 @@ begin
                     ALU_src   <= '0';
                     reg_write <= '0';
               
+              when others =>
+                    Reg_dest  <= 'X'; 
+                    jump      <= 'X';
+                    branch    <= 'X';
+                    mem_read  <= 'X';
+                    mem_reg   <= 'X';
+                    ALU_op    <= "XX";
+                    mem_write <= 'X';
+                    ALU_src   <= 'X';
+                    reg_write <= 'X';
               end case;
            end process;
                     
