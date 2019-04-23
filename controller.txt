@@ -7,7 +7,7 @@ use IEE.STD_LOGIC_1164.ALL;
 use IEE.NUMERIC_STD.ALL;
 
 entity Controller 
-is Port  (op_code    : in  STD_LOGIC_VECTOR (5 downto 0); -- Read data 1 is first data input
+is Port  (op_code    : in  STD_LOGIC_VECTOR (5 downto 0); -- instr[31-26]
           
           Reg_dest   : out std_logic; -- controls mux for write register of register file
           jump       : out std_logic; -- enables mux allowing jump to occur
