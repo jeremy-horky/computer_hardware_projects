@@ -14,10 +14,9 @@ END memUnit_tb;
 ARCHITECTURE Behavioral of memUnit_tb is 
    constant clk_period : time := 20 ns;
    	--Inputs
-   signal address   : std_logic_vector(31 downto 0) := (others => '0');
+   signal address   : std_logic_vector(5 downto 0) := (others => '0');
    signal data      : std_logic_vector(31 downto 0) := (others => '0');
    signal write_en  : std_logic := '0';
-   signal read_en   : std_logic := '0';
    signal clk       : std_logic := '0';
    -- outputs
    signal output       : std_logic_vector(31 downto 0);
@@ -29,7 +28,6 @@ BEGIN
           address   => address,
           data      => data,
           write_en  => write_en,
-          read_en   => read_en,
           clk       => clk,
           
           output    => output
@@ -39,13 +37,62 @@ BEGIN
 
    tb1: process
    begin
-       address <= x"10010000";
-       data    <= x"11111111";
        write_en<= '0';
+       address <= "000000";
+       data    <= x"11111111";
        wait for 10 ns;
        write_en<= '1';
        wait for 10 ns;
-       write_en<= '0';     
+       
+       write_en<= '0';
+       address <= "000001";
+       data    <= x"11111110";
+       wait for 10 ns;
+       write_en<= '1';
+       wait for 10 ns;
+       
+       write_en<= '0';
+       address <= "000010";
+       data    <= x"11111101";
+       wait for 10 ns;
+       write_en<= '1';
+       wait for 10 ns;
+       
+       write_en<= '0';
+       address <= "000011";
+       data    <= x"11111100";
+       wait for 10 ns;
+       write_en<= '1';
+       wait for 10 ns;
+       
+       write_en<= '0';
+       address <= "000100";
+       data    <= x"11111011";
+       wait for 10 ns;
+       write_en<= '1';
+       wait for 10 ns;
+       
+       write_en<= '0';
+       address <= "000101";
+       data    <= x"11111010";
+       wait for 10 ns;
+       write_en<= '1';
+       wait for 10 ns;
+       
+       write_en<= '0';
+       address <= "000110";
+       data    <= x"11111001";
+       wait for 10 ns;
+       write_en<= '1';
+       wait for 10 ns;
+       
+       write_en<= '0';
+       address <= "000111";
+       data    <= x"11111000";
+       wait for 10 ns;
+       write_en<= '1';
+       wait for 10 ns;
+            
    end process;
 
 END Behavioral;

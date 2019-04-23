@@ -1,0 +1,70 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Tue Apr 23 02:36:50 2019
+# Process ID: 21632
+# Current directory: C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/Register
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent25636 C:\Users\horku\Documents\School\EECE\COEN 4710\computer_hardware_projects\Project 2\Register\Register.xpr
+# Log file: C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/Register/vivado.log
+# Journal file: C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/Register\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/Register/Register.xpr}
+INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter.
+Current project path is 'C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/Register'
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2018.3/data/ip'.
+open_project: Time (s): cpu = 00:00:18 ; elapsed = 00:00:07 . Memory (MB): peak = 701.578 ; gain = 105.941
+update_compile_order -fileset sources_1
+synth_design -rtl -name rtl_1
+Command: synth_design -rtl -name rtl_1
+Starting synth_design
+Using part: xc7a35tcpg236-1
+Top: RegFile
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 781.422 ; gain = 59.684
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'RegFile' [C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/Register/Register.srcs/sources_1/new/regFile.vhd:38]
+WARNING: [Synth 8-614] signal 'write_en' is read in the process but is not in the sensitivity list [C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/Register/Register.srcs/sources_1/new/regFile.vhd:79]
+INFO: [Synth 8-256] done synthesizing module 'RegFile' (1#1) [C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/Register/Register.srcs/sources_1/new/regFile.vhd:38]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 811.070 ; gain = 89.332
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 811.070 ; gain = 89.332
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 811.070 ; gain = 89.332
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1056.164 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+RTL Elaboration Complete:  : Time (s): cpu = 00:00:25 ; elapsed = 00:00:17 . Memory (MB): peak = 1173.973 ; gain = 452.234
+6 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:25 ; elapsed = 00:00:17 . Memory (MB): peak = 1173.973 ; gain = 452.234
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue Apr 23 02:47:00 2019...

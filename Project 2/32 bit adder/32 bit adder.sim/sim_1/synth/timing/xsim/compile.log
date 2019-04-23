@@ -1,0 +1,5 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/32 bit adder/32 bit adder.sim/sim_1/synth/timing/xsim/adder_tb_time_synth.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Adder32Bit
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/32 bit adder/32 bit adder.srcs/sim_1/new/Adder32Bit_TB.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'adder_tb'

@@ -1,0 +1,37 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/Memory Unit/Memory Unit.sim/sim_1/synth/timing/xsim/memUnit_tb_time_synth.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module RAM32X1S_UNIQ_BASE_
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD12
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD13
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD14
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD15
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD16
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD17
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD18
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD19
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD20
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD21
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD22
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD23
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD24
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD25
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD26
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD27
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD28
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD29
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD30
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD31
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD32
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD33
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD34
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD35
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD36
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD37
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD38
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD39
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD40
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD41
+INFO: [VRFC 10-311] analyzing module RAM32X1S_HD42
+INFO: [VRFC 10-311] analyzing module mem_unit
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/horku/Documents/School/EECE/COEN 4710/computer_hardware_projects/Project 2/Memory Unit/Memory Unit.srcs/sim_1/new/memUnit_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'memUnit_tb'

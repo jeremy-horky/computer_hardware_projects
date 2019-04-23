@@ -79,7 +79,7 @@ begin
     process(clk)
         begin
         -- write to mem reg is rising clk edge and write is enabled
-        if (clk='1') and (clk'event) and (write_en='1') then
+        if (clk='0') and (clk'event) and (write_en='1') then
             reg_block(to_integer(unsigned(write_reg))) <= write_data;
         end if;
     end process;

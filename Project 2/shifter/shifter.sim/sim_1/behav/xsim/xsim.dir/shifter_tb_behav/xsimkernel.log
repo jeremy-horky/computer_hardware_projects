@@ -2,3 +2,6 @@ Running: xsim.dir/shifter_tb_behav/xsimk.exe -simmode gui -wdb shifter_tb_behav.
 Design successfully loaded
 Design Loading Memory Usage: 5376 KB (Peak: 5376 KB)
 Design Loading CPU Usage: 15 ms
+Simulation completed
+Simulation Memory Usage: 5932 KB (Peak: 5932 KB)
+Simulation CPU Usage: 46 ms

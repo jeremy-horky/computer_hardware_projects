@@ -15,10 +15,9 @@ use ieee.STD_LOGIC_ARITH.all;
 
 entity mem_unit is
 port(
-      address : in  std_logic_vector(31 downto 0); -- address to store data in mem unit
+      address : in  std_logic_vector(5 downto 0); -- address to store data in mem unit
       data    : in  std_logic_vector(31 downto 0);-- data to be written to mem unit
       write_en: in  std_logic;                    -- write enable allows the data to be written
-      read_en : in  std_logic;                    -- enables reading og mem unit
       clk     : in  std_logic;                    -- clock
       
       output     : out std_logic_vector(31 downto 0) -- enables output but memtoreg mux determines if mem unit or ALU output is passed (data path controller determines this)
@@ -63,15 +62,18 @@ signal data_mem: mem_array := (
     X"00000000",
     X"00000000");
 
+signal memAddr : INTEGER := conv_integer(unsigned(address)); 
+
 begin
 
-output <= data_mem(conv_integer(unsigned(address(6 downto 2)))) when read_en = '1' else X"00000000"; -- sets output based on address
+--output <= data_mem(conv_integer(unsigned(address(6 downto 2)))) when read_en = '1' else X"00000000"; -- sets output based on address
 
 mem_process: process(address, data, clk)
 begin
 	if clk = '0' and clk'event then -- if rising edge of clock
 		if (write_en = '1') then -- if writing is enabled	
-			data_mem(conv_integer(unsigned(address(6 downto 2)))) <= data; -- write data mem ALU value
+			data_mem(memAddr) <= data; -- write data mem ALU value
+			output <= data;
 		end if;
 	end if;
 end process mem_process;
