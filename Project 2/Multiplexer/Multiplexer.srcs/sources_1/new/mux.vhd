@@ -16,18 +16,16 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
 entity mux is 
-	generic (n: natural:= 32); -- number of bits in the choices
-                             -- the circuit design uses a 32 bit input mux and others
 	port (
-    		top_input : in std_logic_vector(n-1 downto 0); -- the top mux input
-    		bot_input : in std_logic_vector(n-1 downto 0); -- the bottom mux input
-    		en_top    : in std_logic;                      -- enables top_input as output
+    		top 	  : in std_logic_vector(31 downto 0); -- the top mux input
+    		bot 	  : in std_logic_vector(31 downto 0); -- the bottom mux input
+    		enable    : in std_logic;                     -- enables top_input as output
     
-    		output    : out std_logic_vector(n-1 downto 0) -- output of mux (based on en_top)
+    		output    : out std_logic_vector(31 downto 0) -- output of mux (based on en_top)
 	);
 end mux;
 
 architecture Behavioral of mux is
 	begin
-  	output <= top_input when (en_top = '1') else bot_input;
+  	output <= top when (enable = '1') else bot;
 end Behavioral;
