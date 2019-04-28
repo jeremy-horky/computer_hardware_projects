@@ -18,6 +18,7 @@ entity sign_extend is
 end sign_extend;
 
 architecture Behavioral of sign_extend is
-  output => "0000000000000000" & input; // concatenate 16 bit zero pad with 16 bit input
+  output => input(15) & "000000000000000" & input(14 downto 0); // concatenate 16 bit zero pad with 16 bit input
+                                                                // push top bit of input to top of output to retain sign
   
 end Behavioral;
