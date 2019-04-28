@@ -1,0 +1,23 @@
+--------------------------------------------------------
+-- Code written for Marquette University COEN 4710    --
+-- Project #2: 32-bit MIPS ISA Components             --
+-- Instructor: Dr. Cris Ababei                        --
+-- Authors: Logan Wedel, Jeremy Horky, Daniel Whipple --
+
+-- sign extender zero pads a 16 bit input to a 32 bit output
+--------------------------------------------------------
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity sign_extend is
+  Port  ( input         : in  STD_LOGIC_VECTOR (15 downto 0);  -- inputted 16 bit number
+
+          output        : out STD_LOGIC_VECTOR (31 downto 0)); -- zero padded input to become 32 bit number
+end sign_extend;
+
+architecture Behavioral of sign_extend is
+  output => "0000000000000000" & input; // concatenate 16 bit zero pad with 16 bit input
+  
+end Behavioral;
