@@ -93,7 +93,52 @@ begin
                     mem_write <= '0';
                     ALU_src   <= '0';
                     reg_write <= '0';
-              
+
+              when "101010" or "000010"  => -- slt of srl
+                    Reg_dest  <= '1'; 
+                    jump      <= '0';
+                    branch    <= '0';
+                    mem_read  <= '0';
+                    mem_reg   <= '0';
+                    ALU_op    <= "10";
+                    mem_write <= '0';
+                    ALU_src   <= '0';
+                    reg_write <= '1';
+
+              when "001101" => --ORI (less sure about ori and lui)
+                    Reg_dest  <= 'X'; 
+                    jump      <= '0';
+                    branch    <= '0';
+                    mem_read  <= '0';
+                    mem_reg   <= 'X';
+                    ALU_op    <= "10";
+                    mem_write <= '1';
+                    ALU_src   <= '1';
+                    reg_write <= '0';
+                        
+              when "001111" => --LUI
+                    Reg_dest  <= '0'; 
+                    jump      <= '0';
+                    branch    <= '0';
+                    mem_read  <= '1';
+                    mem_reg   <= '1';
+                    ALU_op    <= "10";
+                    mem_write <= '0';
+                    ALU_src   <= '1';
+                    reg_write <= '1';
+
+              when "0000011" => --jal
+                    Reg_dest  <= 'X'; 
+                    jump      <= 'X';
+                    branch    <= 'X';
+                    mem_read  <= 'X';
+                    mem_reg   <= 'X';
+                    ALU_op    <= "XX";
+                    mem_write <= 'X';
+                    ALU_src   <= 'X';
+                    reg_write <= 'X';
+
+              -- not sure about JR
               when others =>
                     Reg_dest  <= 'X'; 
                     jump      <= 'X';
